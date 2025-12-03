@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Civic Blue Theme - Trust & Authority */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Deep Navy - Primary Authority Color */
+    --primary: 222 65% 25%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Teal Accent - Modern Civic */
+    --secondary: 174 60% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent - Lighter Teal */
+    --accent: 174 50% 92%;
+    --accent-foreground: 174 60% 25%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 222 65% 25%;
+
+    --radius: 0.625rem;
+
+    /* Status Colors */
+    --status-pending: 0 84% 60%;
+    --status-assigned: 38 92% 50%;
+    --status-in-progress: 45 93% 47%;
+    --status-resolved: 142 71% 45%;
+
+    /* Priority Colors */
+    --priority-low: 210 20% 60%;
+    --priority-medium: 38 92% 50%;
+    --priority-high: 25 95% 53%;
+    --priority-urgent: 0 84% 60%;
+
+    /* Custom Civic Colors */
+    --civic-navy: 222 65% 20%;
+    --civic-navy-light: 222 50% 35%;
+    --civic-teal: 174 60% 40%;
+    --civic-teal-light: 174 50% 60%;
+    --civic-gold: 45 93% 47%;
+    --civic-slate: 215 20% 65%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(222 65% 20%) 0%, hsl(222 50% 35%) 50%, hsl(174 60% 40%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-status: linear-gradient(90deg, hsl(var(--status-pending)) 0%, hsl(var(--status-resolved)) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(222 65% 20% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(222 65% 20% / 0.08), 0 2px 4px -2px hsl(222 65% 20% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(222 65% 20% / 0.1), 0 4px 6px -4px hsl(222 65% 20% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(222 65% 20% / 0.1), 0 8px 10px -6px hsl(222 65% 20% / 0.05);
+    --shadow-glow: 0 0 20px hsl(174 60% 40% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 174 60% 50%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 222 40% 25%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 215 20% 60%;
+
+    --accent: 174 40% 20%;
+    --accent-foreground: 174 60% 70%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 20%;
+    --ring: 174 60% 50%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .status-pending {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .status-assigned {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  .status-in-progress {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .status-resolved {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .priority-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
+  }
+
+  .priority-low {
+    @apply bg-slate-100 text-slate-700;
+  }
+
+  .priority-medium {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .priority-high {
+    @apply bg-orange-100 text-orange-700;
+  }
+
+  .priority-urgent {
+    @apply bg-red-100 text-red-700;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
+  }
+
+  .civic-gradient {
+    background: var(--gradient-hero);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Leaflet custom styles - CRITICAL for map rendering */
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 0;
+  @apply rounded-lg;
+  font-family: inherit;
+}
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-map-pane svg,
+.leaflet-map-pane canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-tile {
+  filter: inherit;
+  visibility: inherit;
+}
+
+.leaflet-tile-container {
+  pointer-events: none;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-lg shadow-lg;
+}
+
+.leaflet-popup-content {
+  @apply m-0 p-0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50;
+}

@@ -1,0 +1,4 @@
+project_id = "vpeacgpfoasakfvqnyjl"
+
+[functions.send-complaint-confirmation]
+verify_jwt = false
